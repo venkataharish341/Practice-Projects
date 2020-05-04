@@ -1,0 +1,32 @@
+--https://www.browserling.com/tools/bcrypt
+--username: myApp1, password: password (These are client id and client secret)
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) VALUES ('myApp1', '{bcrypt}$2a$10$F1ELP0rRZvEmB6Jk5r5OdeNzfxWXoW1ofOUNYHWXVdXEJYYQQwFm2', 'http://localhost:8080/code', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
+
+ INSERT INTO PERMISSION (NAME) VALUES
+ ('create_todo'),
+ ('read_todo'),
+ ('update_todo'),
+ ('delete_todo');
+
+ INSERT INTO role (NAME) VALUES
+		('ROLE_admin'),('ROLE_editor'),('ROLE_operator');
+
+ INSERT INTO PERMISSION_ROLE (PERMISSION_ID, ROLE_ID) VALUES
+     (1,1), /*create-> admin */
+     (2,1), /* read admin */
+     (3,1), /* update admin */
+     (4,1), /* delete admin */
+     (2,2), /* read editor */
+     (3,2), /* update editor */
+     (2,3); /* read operator */
+     
+-- harish: kpass, yaswanth:spass, nani: spass     
+insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'harish','{bcrypt}$2a$10$ODGwrk2ufy5d7T6afmACwOA/6j6rvXiP5amAMt1YjOQSdEw44QdqG', 'vharishtavva@gmail.com', '1', '1', '1', '1');
+insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'yaswanth', '{bcrypt}$2a$10$wQ8vZl3Zm3.zDSIcZEYym.bGq3fPMJXH9k.Vhudcfr6O6KQwDPSt6','tavvayaswanth@gmail.com', '1', '1', '1', '1');
+insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('3', 'nani', '{bcrypt}$2a$10$wQ8vZl3Zm3.zDSIcZEYym.bGq3fPMJXH9k.Vhudcfr6O6KQwDPSt6','nani@gmail.com', '1', '1', '1', '1');
+
+INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
+    VALUES
+    (1, 1), /* harish-admin */
+    (2, 2), /* yaswanth-editor */
+    (3, 3); /* nani-editor */
