@@ -100,6 +100,13 @@
 			<artifactId>spring-cloud-starter-security</artifactId>
 			<version>2.2.0.RELEASE</version>
 		</dependency>
+
+		<!-- Jasypt for Encryption of passwords -->
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
