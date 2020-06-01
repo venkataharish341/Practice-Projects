@@ -11,7 +11,7 @@
 	<groupId>com.learn2earn</groupId>
 	<artifactId>todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging> <!-- Use war for War packaging. -->
 	<name>todo</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -27,11 +27,11 @@
 		</dependency>
 		
 		<!-- For using external tomcat. -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		
 		<!-- Spring Data JPA -->
 		<dependency>
