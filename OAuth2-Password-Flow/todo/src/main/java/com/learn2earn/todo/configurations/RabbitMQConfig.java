@@ -8,6 +8,7 @@ import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,14 +19,8 @@ import com.learn2earn.todo.services.RabbitEmailListenerService;
 @EnableRabbit
 public class RabbitMQConfig {
 
-	@Value("${spring.rabbitmq.username}")
-	private String userName;
-
-	@Value("${spring.rabbitmq.password}")
-	private String password;
-
-	@Value("${spring.rabbitmq.host}")
-	private String host;
+	@Autowired
+	private RabbitConfigProperties rabbitProps;
 
 	@Value("${harish.rabbitmq.emailQueue}")
 	private String emailQueue;
@@ -40,9 +35,9 @@ public class RabbitMQConfig {
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-		connectionFactory.setAddresses(host);
-		connectionFactory.setUsername(userName);
-		connectionFactory.setPassword(password);
+		connectionFactory.setAddresses(rabbitProps.getHost());
+		connectionFactory.setUsername(rabbitProps.getUsername());
+		connectionFactory.setPassword(rabbitProps.getPassword());
 		return connectionFactory;
 	}
 
